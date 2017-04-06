@@ -1,0 +1,15 @@
+1. Number of data nodes = H/d
+d- DISK SPACE=7TB
+h- disk space=600TB 
+n=600/7
+n= 86 data nodes.
+
+2.
+Yes 
+let us consider the block size to be 100 MB .5 blocks is to be replicated 3 times.
+We have 5 blocks 1,2,3,4,5 for a file, a client, a namenode and a datanode. The client will take Block 1 to store in this block and the replicated copies.
+Once client is aware about the datanode information, it will directly reach out to datanode and start copying Block 1
+which will be replicated other 2 datanodes. Once the block is copied and replicated to the datanodes, client will get the confirmation about the Block 1 storage
+and then the same process is continued for Block 2.
+So, during this process if 1st block of 100 MB is written to HDFS and the next block has been started by the client to
+store then 1st block will be visible to readers. Only the current block being written will not be visible by the readers.
